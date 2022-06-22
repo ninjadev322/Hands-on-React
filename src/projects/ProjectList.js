@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Project } from './Project';
 import ProjectCard from './ProjectCard';
 
-ProjectList.propTypes = {
-    projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired
-}
+// ProjectList.propTypes = {
+//     projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired
+// }
 function ProjectList({ projects }) {
     // return <pre>{JSON.stringify(projects, null, ' ')}</pre>
     return (
@@ -19,8 +19,8 @@ function ProjectList({ projects }) {
     );
 }
 
-ProjectList.propTypes = {
-    project: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired,
-};
+// ProjectList.propTypes = {
+//     project: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired,
+// };
 
 export default ProjectList;
