@@ -9,15 +9,20 @@ import ProjectForm from './ProjectForm';
 // }
 function ProjectList({ projects }) {
     // return <pre>{JSON.stringify(projects, null, ' ')}</pre>
-    return (
-        <div className="row">
-            {projects.map((project) => (
-                <div key={project.id} className="cols-sm">
-                    <ProjectCard project={project}></ProjectCard>
-                    <ProjectForm />
-                </div>
-            ))}
+    const handleEdit = (project) => {
+        console.log(project);
+    };
+    const items = projects.map(project => (
+        <div key={project.id} className="cols-sm">
+            <ProjectCard
+                project={project}
+                onEdit={handleEdit}
+            ></ProjectCard>
+            <ProjectForm></ProjectForm>
         </div>
+    ));
+    return (
+        <div className="row">{items}</div>
     );
 }
 
