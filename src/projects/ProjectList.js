@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Project } from './Project';
 import ProjectCard from './ProjectCard';
+import ProjectForm from './ProjectForm';
 
 // ProjectList.propTypes = {
 //     projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired
@@ -13,6 +14,7 @@ function ProjectList({ projects }) {
             {projects.map((project) => (
                 <div key={project.id} className="cols-sm">
                     <ProjectCard project={project}></ProjectCard>
+                    <ProjectForm />
                 </div>
             ))}
         </div>
