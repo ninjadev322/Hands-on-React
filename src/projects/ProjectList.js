@@ -1,5 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// import React from 'react';
+import React, { useState } from 'react';
+// import PropTypes from 'prop-types';
 import { Project } from './Project';
 import ProjectCard from './ProjectCard';
 import ProjectForm from './ProjectForm';
@@ -9,16 +10,29 @@ import ProjectForm from './ProjectForm';
 // }
 function ProjectList({ projects }) {
     // return <pre>{JSON.stringify(projects, null, ' ')}</pre>
+    const [projectBeingEdited, setProjectBeingEdited] = useState({});
     const handleEdit = (project) => {
-        console.log(project);
+        // console.log(project);
+        setProjectBeingEdited(project);
     };
     const items = projects.map(project => (
         <div key={project.id} className="cols-sm">
-            <ProjectCard
+            {/* <ProjectCard
                 project={project}
                 onEdit={handleEdit}
-            ></ProjectCard>
-            <ProjectForm></ProjectForm>
+            />
+            <ProjectForm /> */}
+
+            {
+                project === projectBeingEdited ? (
+                    <ProjectForm />
+                ) : (
+                    <ProjectCard
+                        project={project}
+                        onEdit={handleEdit}
+                    />
+                )
+            }
         </div>
     ));
     return (
