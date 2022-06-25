@@ -29,6 +29,7 @@ function ProjectList({ projects, onSave }) {
             {
                 project === projectBeingEdited ? (
                     <ProjectForm 
+                        project={project}
                         onSave = {onSave}
                         onCancel={cancelEditing}
                     />
@@ -47,7 +48,7 @@ function ProjectList({ projects, onSave }) {
 }
 
 ProjectList.propTypes = {
-    project: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired,
+    projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired,
     onSave: PropTypes.func.isRequired
 };
 
