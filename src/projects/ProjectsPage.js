@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 // import { MOCK_PROJECTS } from './MockProjects';
 import { projectAPI } from './projectAPI';
 import ProjectList from './ProjectList';
+import { Project } from './Project';
 
 
 function ProjectsPage() {
@@ -46,10 +47,21 @@ function ProjectsPage() {
 
     const saveProject = (project) => {
         // console.log("Saving project: ", project);
-        let updatedProjects = projects.map((p) => {
-            return p.id === project.id ? project : p;
-        });
-        setProjects(updatedProjects);
+        // let updatedProjects = projects.map((p) => {
+        //     return p.id === project.id ? project : p;
+        // });
+        // setProjects(updatedProjects);
+        projectAPI
+            .put(project)
+            .then((updatedProject) => {
+                let updatedProjects = projects.map((p) => {
+                    return p.id === project.id ? new Project(updatedProject) : p;
+                });
+                setProjects(updatedProjects);
+            })
+                .catch((e) => {
+                    setError(e.message);
+                });
     };
     return (
         <Fragment>
