@@ -3,7 +3,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { projectAPI } from './projectAPI';
 import ProjectList from './ProjectList';
 import { Project } from './Project';
-
+import ProjectListSkeleton from './ProjectListSkeleton';
 
 function ProjectsPage() {
     // const [projects, setProjects] = useState(MOCK_PROJECTS);
@@ -79,6 +79,7 @@ function ProjectsPage() {
                 </div>
             )}
             {/* <pre>{JSON.stringify(MOCK_PROJECTS, null, ' ')}</pre> */}
+            {loading && <ProjectListSkeleton />}
             <ProjectList
                 onSave={saveProject}
                 // projects={MOCK_PROJECTS}
