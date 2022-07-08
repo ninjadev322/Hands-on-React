@@ -1,9 +1,11 @@
 // import React, { Fragment, useState, useEffect } from 'react';
-import React, { Fragment, useEffect } from 'react';
+// import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 // import { MOCK_PROJECTS } from './MockProjects';
 // import { projectAPI } from './projectAPI';
 import { loadProjects } from '../state/projectActions';
 import ProjectList from './ProjectList';
+import { useProjects } from './projectHooks';
 // import { Project } from './Project';
 import { useSelector, useDispatch } from 'react-redux';
 import ProjectListSkeleton from './ProjectListSkeleton';
@@ -13,19 +15,30 @@ function ProjectsPage() {
     // const [projects, setProjects] = useState([]);
     // const [loading, setLoading] = useState(false);
     // const [error, setError] = useState(undefined);
-    const loading = useSelector(
-        (appState) => appState.projectState.loading
-    );
-    const projects = useSelector(
-        (appState) => appState.projectState.projects
-    );
-    const error = useSelector(
-        (appState) => appState.projectState.error
-    );
-    const currentPage = useSelector(
-        (appState) => appState.projectState.page
-    );
-    const dispatch = useDispatch();
+    // const loading = useSelector(
+    //     (appState) => appState.projectState.loading
+    // );
+    // const projects = useSelector(
+    //     (appState) => appState.projectState.projects
+    // );
+    // const error = useSelector(
+    //     (appState) => appState.projectState.error
+    // );
+    // const currentPage = useSelector(
+    //     (appState) => appState.projectState.page
+    // );
+    // const dispatch = useDispatch();
+
+    const {
+        projects,
+        loading,
+        error,
+        setCurrentPage,
+        saveProject,
+        saving,
+        savingError,
+    } = useProjects();
+        
 
     // Approach 1: using promise then
 //  useEffect(() => {
@@ -59,9 +72,9 @@ function ProjectsPage() {
     //     }
     //     loadProjects();
     // }, []);
-    useEffect(() => {
-        dispatch(loadProjects(1));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(loadProjects(1));
+    // }, [dispatch]);
 
     // const saveProject = (project) => {
     //     // console.log("Saving project: ", project);
@@ -84,13 +97,16 @@ function ProjectsPage() {
     return (
         <Fragment>
             <h1>Projects</h1>
-            {error && (
+            {saving && <span className="toast">Saving...</span>}
+            {/* {error && ( */}
+            {(error || savingError) && (
                 <div className="row">
                     <div className="card large error">
                         <section>
                             <p>
                                 <span className="icon-alert inverse "></span>
-                                {error}
+                                {/* {error} */}
+                                {error} {savingError}
                             </p>
                         </section>
                     </div>
