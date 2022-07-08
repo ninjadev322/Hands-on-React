@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Project } from './Project';
+import { useDispatch } from 'react-redux';
+import { saveProject } from '../state/projectActions';
 
 // function ProjectForm() {
 function ProjectForm({ 
     project: initialProject,
-    onSave,
+    // onSave,
     onCancel
 }) {
     const [project, setProject] = useState(initialProject);
@@ -14,11 +16,13 @@ function ProjectForm({
         description: '',
         budget: '',
     });
+    const dispatch = useDispatch();
     const handleSubmit = (event) => {
         event.preventDefault();
         // onSave(new Project({ name: 'Updated Project' }));
         if(!isValid()) return;
-        onSave(project);
+        // onSave(project);
+        dispatch(saveProject(project));
     }
     const handleChange = (event) => {
         const { type, name, value, checked } = event.target;
@@ -142,7 +146,7 @@ function ProjectForm({
 
 ProjectForm.propTypes = {
     project: PropTypes.instanceOf(Project),
-    onSave: PropTypes.func.isRequired,
+    // onSave: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired
 };
 export default ProjectForm;

@@ -1,4 +1,4 @@
-import { Project } from '../Project';
+import { Project } from '../projects/Project';
 import {
   LOAD_PROJECTS_REQUEST,
   LOAD_PROJECTS_SUCCESS,

@@ -1,4 +1,4 @@
-import { projectAPI } from '../projectAPI';
+import { projectAPI } from '../projects/projectAPI';
 
 import {
   LOAD_PROJECTS_REQUEST,

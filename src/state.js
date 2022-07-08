@@ -3,8 +3,8 @@ import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { combineReducers } from 'redux';
 
-import { initialProjectState } from './projects/state/projectReducer';
-import { projectReducer } from './projects/state/projectReducer';
+import { initialProjectState } from './state/projectReducer';
+import { projectReducer } from './state/projectReducer';
 
 const reducer = combineReducers({
     projectState: projectReducer

@@ -8,7 +8,8 @@ import ProjectForm from './ProjectForm';
 // ProjectList.propTypes = {
 //     projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired
 // }
-function ProjectList({ projects, onSave }) {
+// function ProjectList({ projects, onSave }) {
+function ProjectList({ projects }) {
     // return <pre>{JSON.stringify(projects, null, ' ')}</pre>
     const [projectBeingEdited, setProjectBeingEdited] = useState({});
     const handleEdit = (project) => {
@@ -30,7 +31,7 @@ function ProjectList({ projects, onSave }) {
                 project === projectBeingEdited ? (
                     <ProjectForm 
                         project={project}
-                        onSave = {onSave}
+                        // onSave = {onSave}
                         onCancel={cancelEditing}
                     />
                 ) : (
@@ -49,7 +50,7 @@ function ProjectList({ projects, onSave }) {
 
 ProjectList.propTypes = {
     projects: PropTypes.arrayOf(PropTypes.instanceOf(Project)).isRequired,
-    onSave: PropTypes.func.isRequired
+    // onSave: PropTypes.func.isRequired
 };
 
 export default ProjectList;

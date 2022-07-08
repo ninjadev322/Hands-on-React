@@ -3,6 +3,8 @@ import React from 'react';
 import './App.css';
 import ProjectsPage from './projects/ProjectsPage';
 import ProjectPage from './projects/ProjectPage';
+import { Provider } from 'react-redux';
+import { store } from './state';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import {
@@ -38,7 +40,8 @@ function App() {
     //   <ProjectsPage/>
     // </div>
     // <Router>
-    <>
+    // <>
+    <Provider store={store}>
       <header className="sticky">
         <span className="logo">
           <img src="/assets/logo-3.svg" alt="logo" width="49" height="99" />
@@ -63,7 +66,9 @@ function App() {
           </CSSTransition>
         </TransitionGroup>
       </div>
-    </>
+    </Provider>
+    // </>
+
     // </Router>
   );
 }
