@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Project } from './Project';
 import { useDispatch } from 'react-redux';
 import { saveProject } from '../state/projectActions';
+import { useSaveProject } from './projectHooks';
 
 // function ProjectForm() {
 function ProjectForm({ 
@@ -16,6 +17,7 @@ function ProjectForm({
         description: '',
         budget: '',
     });
+    const { mutate: saveProject, isLoading } = useSaveProject();
     const dispatch = useDispatch();
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -23,6 +25,7 @@ function ProjectForm({
         if(!isValid()) return;
         // onSave(project);
         dispatch(saveProject(project));
+        saveProject(project);
     }
     const handleChange = (event) => {
         const { type, name, value, checked } = event.target;
@@ -77,6 +80,7 @@ function ProjectForm({
         <form className="input-group vertical"
             onSubmit={handleSubmit}
         >
+            {isLoading && <span className="toast">Saving...</span>}
             <label htmlFor="name">Project Name</label>
             <input
                 type="text"
